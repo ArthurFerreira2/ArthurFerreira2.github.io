@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Using Pelican to generate a static siteArthur's pages</title>
+
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/main.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="" class="grv-img"/></div>
+        <div class="title"><a href="http://127.0.0.1:8000/">Arthur's pages </a></div>
+        <div class="sub-title"></div>
+
+<p>
+  <div class="view"><a href="http://127.0.0.1:8000/archives.html">Archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>Follow Me</h4>
+<ul>
+    <li><a href="https://github.com/ArthurFerreira2">Github</a></li>
+    <li><a href="https://twitter.com/reinette_II">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
+</ul>
+</div>
+
+      </header>
+      <section>
+<section id="content" class="body">
+  <article>
+      <div class="article-title">
+        Using Pelican to generate a static site
+      </div>
+
+    <div class="entry-content">
+<p>
+<small>
+<abbr class="published" title="2021-01-11T21:37:00+01:00">
+  Mon 11 January 2021
+</abbr> | 
+  tags: 
+    <a href="http://127.0.0.1:8000/tag/html.html">html</a>, 
+    <a href="http://127.0.0.1:8000/tag/web.html">web</a>, 
+ -- (<a href="http://127.0.0.1:8000/using-pelican-to-generate-a-static-site.html" rel="bookmark">permalink</a>)
+</small>
+</p>      <p>Pelican is an open source project written in Python.</p>
+<h2>create a python3 virtual env</h2>
+<p>create a dedicated folder</p>
+<div class="highlight"><pre><span></span><code>mkdir pelican
+<span class="nb">cd</span> pelican/
+python3 -m venv venv
+</code></pre></div>
+
+
+<p>source the activation script</p>
+<div class="highlight"><pre><span></span><code>. ./venv/bin/activate
+</code></pre></div>
+
+
+<h2>install pelican</h2>
+<div class="highlight"><pre><span></span><code>python -m pip install <span class="s2">&quot;pelican[markdown]&quot;</span>
+</code></pre></div>
+
+
+<p>after installation, the following modules are installed :</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>venv<span class="o">)</span> cold <span class="o">[</span> site <span class="o">]</span>$ pip list
+Package         Version
+--------------- -------
+blinker         <span class="m">1</span>.4
+docutils        <span class="m">0</span>.16
+feedgenerator   <span class="m">1</span>.9.1
+Jinja2          <span class="m">2</span>.11.2
+Markdown        <span class="m">3</span>.2.2
+MarkupSafe      <span class="m">1</span>.1.1
+pelican         <span class="m">4</span>.5.4
+pip             <span class="m">20</span>.3.3
+Pygments        <span class="m">2</span>.6.1
+python-dateutil <span class="m">2</span>.8.1
+pytz            <span class="m">2020</span>.5
+setuptools      <span class="m">51</span>.1.1
+six             <span class="m">1</span>.15.0
+smartypants     <span class="m">2</span>.0.1
+typogrify       <span class="m">2</span>.0.7
+Unidecode       <span class="m">1</span>.1.2
+</code></pre></div>
+
+
+<p>later, you can update pelican within the virtual env using :</p>
+<div class="highlight"><pre><span></span><code>python -m pip install --upgrade pelican
+</code></pre></div>
+
+
+<p>create a subfolder for your site</p>
+<div class="highlight"><pre><span></span><code>mkdir site
+<span class="nb">cd</span> site
+</code></pre></div>
+
+
+<p>Use the pelican quickstart script to install the defaul theme, and some configuration files</p>
+<div class="highlight"><pre><span></span><code>pelican-quickstart
+</code></pre></div>
+
+
+<h2>create your first content and test it</h2>
+<p>Let's create our first article</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> content
+cat &gt; keyboard-review.md
+    Title: My First Review
+    Date: <span class="m">2010</span>-12-03 <span class="m">10</span>:20
+    Category: Review
+
+    Following is a review of my favorite mechanical keyboard.
+</code></pre></div>
+
+
+<p>Generate the html files and test it locally</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ..
+pelican content
+pelican --autoreload --listen
+</code></pre></div>
+
+
+<p>open your browser to : <code>http://127.0.0.1:8000</code></p>
+<p>et voilà !</p>
+<h2>tip and trics</h2>
+<p>Print all pelican settings :</p>
+<div class="highlight"><pre><span></span><code>pelican --print-settings
+</code></pre></div>
+
+
+<p>Install additionnal themes in :</p>
+<div class="highlight"><pre><span></span><code>/venv/lib/python3.9/site-packages/pelican/themes/notmyidea
+</code></pre></div>
+    </div><!-- /.entry-content -->
+  </article>
+</section>
+      </section>
+      <footer>
+        <p><small>&copy; Arthur's pages &mdash; Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

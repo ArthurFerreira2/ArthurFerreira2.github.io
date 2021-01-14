@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>A better terminalArthur's pages</title>
+
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/main.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="" class="grv-img"/></div>
+        <div class="title"><a href="http://127.0.0.1:8000/">Arthur's pages </a></div>
+        <div class="sub-title"></div>
+
+<p>
+  <div class="view"><a href="http://127.0.0.1:8000/archives.html">Archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>Follow Me</h4>
+<ul>
+    <li><a href="https://github.com/ArthurFerreira2">Github</a></li>
+    <li><a href="https://twitter.com/reinette_II">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
+</ul>
+</div>
+
+      </header>
+      <section>
+<section id="content" class="body">
+  <article>
+      <div class="article-title">
+        A better terminal
+      </div>
+
+    <div class="entry-content">
+<p>
+<small>
+<abbr class="published" title="2021-01-05T01:21:00+01:00">
+  Tue 05 January 2021
+</abbr> | 
+  tags: 
+    <a href="http://127.0.0.1:8000/tag/apple.html">apple</a>, 
+    <a href="http://127.0.0.1:8000/tag/macos.html">macOS</a>, 
+ -- (<a href="http://127.0.0.1:8000/a-better-terminal.html" rel="bookmark">permalink</a>)
+</small>
+</p>      <p>The terminal shipped with macOS is actually very good and well customisable. But it lacks some features I was used to with the counterpart products on Linux :</p>
+<ul>
+<li>Sending keystrokes to multiple windows at the same time.</li>
+<li>Search in the scroll buffer.</li>
+<li>Clipboard management.</li>
+</ul>
+<p>It's been a while I'm using <a href="iterm2.com">iterm2</a> (<a href="https://github.com/gnachman/iTerm2">source</a>) and I have to say I'm very satisfied with this nice peace of software.</p>
+<p><img src="/images/iterm2.png" alt="iterm2 in use" /></p>
+<h2>Bonus</h2>
+<p>It implements a focus follows mouse and many <a href="https://iterm2.com/features.html">other nice features</a>.</p>
+<h2>Installation</h2>
+<p>Installation is, as for most of software for macOS, straight forward :</p>
+<ul>
+<li>Download from https://iterm2.com/downloads.html</li>
+<li>Double click the downloaded file to either mount the dmg or unzip into a folder.</li>
+<li>Move to app into the Application folder.</li>
+</ul>
+<h2>Setup</h2>
+<p>Start Iterm2, open the preference panel (from the menu or using <code>&lt;⌘,&gt;</code>). There are pleinty of options you can play with to customise the terminal to your taste. Your can also directly edit <code>~/Library/Preferences/com.googlecode.iterm2.plist</code> using a property list editor as the one shipped with Xcode.</p>
+    </div><!-- /.entry-content -->
+  </article>
+</section>
+      </section>
+      <footer>
+        <p><small>&copy; Arthur's pages &mdash; Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

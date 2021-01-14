@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Arthur's pages - CategoriesArthur's pages</title>
+
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/main.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="" class="grv-img"/></div>
+        <div class="title"><a href="http://127.0.0.1:8000/">Arthur's pages </a></div>
+        <div class="sub-title"></div>
+
+<p>
+  <div class="view"><a href="http://127.0.0.1:8000/archives.html">Archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>Follow Me</h4>
+<ul>
+    <li><a href="https://github.com/ArthurFerreira2">Github</a></li>
+    <li><a href="https://twitter.com/reinette_II">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
+</ul>
+</div>
+
+      </header>
+      <section>
+    <h1>Categories on Arthur's pages</h1>
+    <ul>
+        <li><a href="http://127.0.0.1:8000/category/about.html">About</a> (1)</li>
+        <li><a href="http://127.0.0.1:8000/category/apple.html">Apple</a> (4)</li>
+        <li><a href="http://127.0.0.1:8000/category/recreations.html">recreations</a> (1)</li>
+        <li><a href="http://127.0.0.1:8000/category/web.html">Web</a> (1)</li>
+    </ul>
+      </section>
+      <footer>
+        <p><small>&copy; Arthur's pages &mdash; Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

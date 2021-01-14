@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Do I need an Apple ID ?Arthur's pages</title>
+
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/main.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="" class="grv-img"/></div>
+        <div class="title"><a href="http://127.0.0.1:8000/">Arthur's pages </a></div>
+        <div class="sub-title"></div>
+
+<p>
+  <div class="view"><a href="http://127.0.0.1:8000/archives.html">Archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>Follow Me</h4>
+<ul>
+    <li><a href="https://github.com/ArthurFerreira2">Github</a></li>
+    <li><a href="https://twitter.com/reinette_II">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
+</ul>
+</div>
+
+      </header>
+      <section>
+<section id="content" class="body">
+  <article>
+      <div class="article-title">
+        Do I need an Apple ID ?
+      </div>
+
+    <div class="entry-content">
+<p>
+<small>
+<abbr class="published" title="2021-01-04T10:20:00+01:00">
+  Mon 04 January 2021
+</abbr> | 
+  tags: 
+    <a href="http://127.0.0.1:8000/tag/apple.html">apple</a>, 
+    <a href="http://127.0.0.1:8000/tag/macos.html">macOS</a>, 
+ -- (<a href="http://127.0.0.1:8000/do-i-need-an-apple-id.html" rel="bookmark">permalink</a>)
+</small>
+</p>      <p>So, you have a mac and you are concerned about your privacy and security. At the first run, your are asked to fill your <strong>Apple ID</strong>, or if you don't have one to create a new account. But do you know you can also skip the step and continue, using a <strong>local only</strong> account like you do on Linux ?</p>
+<h2>Context</h2>
+<p>When my employer gave me a 2017 MacBook Pro for work. I was quite happy and exited as I am every time I have a new computer. I switched it on, the operating system was freshly installed and ready for the last steps of configuration, when it asks the user for its Apple ID.</p>
+<p><strong>I asked to myself if I would put my personal Apple ID on the company computer ?</strong></p>
+<p>I decided instead to create a local account and decline all Apple services.</p>
+<h2>Limitations</h2>
+<p>I'm using this MacBook Pro in a professional environment and as such,  </p>
+<ul>
+<li>I don't store any confidential data into a remote cloud storage.</li>
+<li>I do my own backups.</li>
+<li>I won't use a voice assistant in an open-space.</li>
+<li>I don't listen to music using iTunes (I do web radios instead ;-)</li>
+<li>or see movies at work.</li>
+<li>I don't use my phone to un-lock my computer.</li>
+<li>Won't use FaceTime - Who uses FaceTime ?</li>
+<li>I don't need to organise my holiday photos during working hours.</li>
+<li>I won't play games (other than <a href="https://www.nethack.org">nethack</a> from a distant server, while listening to web radios).</li>
+<li>I won't install any software that I can't compile myself.</li>
+<li>I don't need targeted ads, actually I don't need ads at all.</li>
+</ul>
+<p>In summary, I don't need all the - very good - software and services shipped with macOS in a <strong>professional</strong> environment.</p>
+<p>Still, I'm concerned I won't be able to use the App Store and download goodies like pages and numbers.  </p>
+<h2>Benefits</h2>
+<p>Your computer won't waste CPU cycles and ruin your battery life doing unsolicited things like :</p>
+<ul>
+<li>Scanning your photos for faces, indexing them by geographical position and try to match with other users around the world to create small world graphs and better classify you and you peers.</li>
+<li>Indexing your music, your books, your documents, your mails, etc ... for the same purpose.</li>
+<li>Backup your contacts, your calendar, your photos, your movies and any other file to fill your free storage and better sell your premium subscription for bigger space.</li>
+<li>Permanently listen over the mic, actively waiting you say something like 'Hey Siri, can you look for me at the window and tell if it's raining today ?'</li>
+<li>You know what I'm talking about ... I don't have to list every thing right ?</li>
+</ul>
+<p>You protect your privacy : all these services have telemetry agents sending information about the usage your make of them.</p>
+<h2>Creating a second admin account</h2>
+<p>If you really need to install something from the App Store, you might be able to create a dummy account with admin privileges and associate it a fresh Apple ID. Then, temporary use this account to install the wanted software and delete the account. <strong>I have not tested that</strong></p>
+    </div><!-- /.entry-content -->
+  </article>
+</section>
+      </section>
+      <footer>
+        <p><small>&copy; Arthur's pages &mdash; Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>The Mandelbrot setArthur's pages</title>
+
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/main.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="" class="grv-img"/></div>
+        <div class="title"><a href="http://127.0.0.1:8000/">Arthur's pages </a></div>
+        <div class="sub-title"></div>
+
+<p>
+  <div class="view"><a href="http://127.0.0.1:8000/archives.html">Archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>Follow Me</h4>
+<ul>
+    <li><a href="https://github.com/ArthurFerreira2">Github</a></li>
+    <li><a href="https://twitter.com/reinette_II">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
+</ul>
+</div>
+
+      </header>
+      <section>
+<section id="content" class="body">
+  <article>
+      <div class="article-title">
+        The Mandelbrot set
+      </div>
+
+    <div class="entry-content">
+<p>
+<small>
+<abbr class="published" title="2021-01-12T21:23:00+01:00">
+  Tue 12 January 2021
+</abbr> | 
+  tags: 
+    <a href="http://127.0.0.1:8000/tag/recreations.html">recreations</a>, 
+ -- (<a href="http://127.0.0.1:8000/the-mandelbrot-set.html" rel="bookmark">permalink</a>)
+</small>
+</p>      <h3>Abstract</h3>
+<p>The Mandelbrot set is a fractal object of the complex plan defined by the set of points c for which the serie defined by :</p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/cdc91da4c99377dd51c6178f427ec0892bbb5591" alt=" \begin{cases} z_0=0\\ z_{n+1}=z_n^2+c \end{cases} " style="zoom:120%;" /></p>
+<p>converges after a few iterations.</p>
+<p>I'll explain a simple algorithm to plot the Mandelbrot set and provide two implementations, one in C and the second in Python.</p>
+<h2>Algorithm</h2>
+<p>The algorithm uses the following properties of the Mandelbrot set :</p>
+<p><strong>property 1 :</strong> The Mandelbrot set is bound into the square between (-2.0, 1.25i) and (0.5,-1.25i).</p>
+<p><strong>property 2 :</strong> if |Zn| &gt; 2, then the serie will increase towards infinity after n.</p>
+<p><strong>property 3 :</strong> The series converges if for n in [0,40],  |Zn| is less than 2.</p>
+<p><strong>property 4 :</strong> The set is symetrical across the real axis.   </p>
+<p>To draw the Mandelbrot set, we take all pixels, calculte the scaled real and imaginary value of the point, iterate the serie for n from 0 to 40 - if |Zn| &gt; 2, we break the iteration. the pixel it plot using a grey value mapped to n : black for n near to zero, white for n near to 40. The intensity of grey is proportional to the speed with which the value of Z goes to infinity.   </p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">each</span> <span class="n">pixel</span> <span class="p">(</span><span class="n">Px</span><span class="o">,</span> <span class="n">Py</span><span class="p">)</span> <span class="k">on</span> <span class="n">the</span> <span class="n">screen</span> <span class="k">do</span>
+    <span class="n">x0</span> <span class="o">:=</span> <span class="n">scaled</span> <span class="n">x</span> <span class="n">coordinate</span> <span class="k">of</span> <span class="n">pixel</span> <span class="p">(</span><span class="n">scaled</span> <span class="k">to</span> <span class="n">lie</span> <span class="k">in</span> <span class="n">the</span> <span class="n">Mandelbrot</span> <span class="n">X</span> <span class="n">scale</span> <span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="o">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">y0</span> <span class="o">:=</span> <span class="n">scaled</span> <span class="n">y</span> <span class="n">coordinate</span> <span class="k">of</span> <span class="n">pixel</span> <span class="p">(</span><span class="n">scaled</span> <span class="k">to</span> <span class="n">lie</span> <span class="k">in</span> <span class="n">the</span> <span class="n">Mandelbrot</span> <span class="n">Y</span> <span class="n">scale</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">:=</span> <span class="mf">0.0</span>
+    <span class="n">y</span> <span class="o">:=</span> <span class="mf">0.0</span>
+    <span class="n">iteration</span> <span class="o">:=</span> <span class="mi">0</span>
+    <span class="n">max_iteration</span> <span class="o">:=</span> <span class="mi">40</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="err">≤</span> <span class="mi">2</span><span class="o">*</span><span class="mi">2</span> <span class="k">AND</span> <span class="n">iteration</span> <span class="o">&lt;</span> <span class="n">max_iteration</span><span class="p">)</span> <span class="k">do</span>
+        <span class="n">xtemp</span> <span class="o">:=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">x0</span>
+        <span class="n">y</span> <span class="o">:=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">y0</span>
+        <span class="n">x</span> <span class="o">:=</span> <span class="n">xtemp</span>
+        <span class="n">iteration</span> <span class="o">:=</span> <span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">color</span> <span class="o">:=</span> <span class="n">palette</span><span class="p">[</span><span class="n">iteration</span><span class="p">]</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">Px</span><span class="o">,</span> <span class="n">Py</span><span class="o">,</span> <span class="n">color</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h2>Implementation in C</h2>
+<p>This implementation uses minimal function from the SDL2 library to create a window and plot pixels directly in its frame buffer.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;SDL2/SDL.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define WIDTH 800</span>
+<span class="cp">#define HEIGHT 800</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">args</span><span class="p">[]){</span>
+
+  <span class="n">SDL_Init</span><span class="p">(</span><span class="n">SDL_INIT_VIDEO</span><span class="p">);</span>
+  <span class="n">SDL_Window</span>  <span class="o">*</span><span class="n">window</span>  <span class="o">=</span> <span class="n">SDL_CreateWindow</span><span class="p">(</span><span class="s">&quot;Mandelbrot set in c&quot;</span><span class="p">,</span> <span class="n">SDL_WINDOWPOS_CENTERED</span><span class="p">,</span> <span class="n">SDL_WINDOWPOS_CENTERED</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">SDL_Surface</span> <span class="o">*</span><span class="n">winSurf</span> <span class="o">=</span> <span class="n">SDL_GetWindowSurface</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+  <span class="n">Uint32</span>      <span class="o">*</span><span class="n">pixels</span>  <span class="o">=</span> <span class="n">winSurf</span><span class="o">-&gt;</span><span class="n">pixels</span><span class="p">;</span>
+  <span class="n">SDL_Event</span>    <span class="n">event</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="kt">int</span> <span class="n">max_iter</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">zoom</span> <span class="o">=</span> <span class="mf">2.5</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">colorFactor</span>  <span class="o">=</span> <span class="mi">256</span> <span class="o">/</span> <span class="n">max_iter</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">widthFactor</span>  <span class="o">=</span> <span class="n">WIDTH</span> <span class="o">/</span> <span class="n">zoom</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">heightFactor</span> <span class="o">=</span> <span class="n">HEIGHT</span> <span class="o">/</span> <span class="n">zoom</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">cr</span><span class="p">,</span> <span class="n">ci</span><span class="p">,</span> <span class="n">zr</span><span class="p">,</span> <span class="n">zi</span><span class="p">,</span> <span class="n">tmp</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">color</span><span class="p">;</span>
+
+  <span class="c1">// compute the set for every point</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">x</span><span class="o">&lt;</span><span class="n">WIDTH</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">y</span><span class="o">&lt;</span><span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">y</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">cr</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">widthFactor</span>  <span class="o">-</span> <span class="mi">2</span> <span class="p">;</span>
+      <span class="n">ci</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="n">heightFactor</span> <span class="o">-</span> <span class="mf">1.25</span><span class="p">;</span>
+      <span class="n">zr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">zi</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+            <span class="c1">// recurse</span>
+      <span class="k">for</span> <span class="p">(</span><span class="n">iteration</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">iteration</span><span class="o">&lt;</span><span class="n">max_iter</span><span class="p">;</span> <span class="n">iteration</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">zr</span><span class="p">;</span>
+        <span class="n">zr</span> <span class="o">=</span> <span class="n">zr</span><span class="o">*</span><span class="n">zr</span> <span class="o">-</span> <span class="n">zi</span><span class="o">*</span><span class="n">zi</span> <span class="o">+</span> <span class="n">cr</span><span class="p">;</span>
+        <span class="n">zi</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">tmp</span><span class="o">*</span><span class="n">zi</span>  <span class="o">+</span> <span class="n">ci</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">((</span><span class="n">zr</span><span class="o">*</span><span class="n">zr</span> <span class="o">+</span> <span class="n">zi</span><span class="o">*</span><span class="n">zi</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="c1">// update the frame buffer</span>
+      <span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">iteration</span><span class="o">*</span><span class="n">colorFactor</span><span class="p">);</span>
+      <span class="n">pixels</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">]</span> <span class="o">=</span> <span class="n">SDL_MapRGBA</span><span class="p">(</span><span class="n">winSurf</span><span class="o">-&gt;</span><span class="n">format</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">SDL_ALPHA_OPAQUE</span><span class="p">);</span>
+      <span class="n">pixels</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">HEIGHT</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">]</span> <span class="o">=</span> <span class="n">SDL_MapRGBA</span><span class="p">(</span><span class="n">winSurf</span><span class="o">-&gt;</span><span class="n">format</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">SDL_ALPHA_OPAQUE</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// display the results</span>
+  <span class="n">SDL_UpdateWindowSurface</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+
+  <span class="c1">// wait for a key press</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">SDL_TRUE</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">SDL_PollEvent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">event</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">SDL_QUIT</span> <span class="o">||</span> <span class="n">event</span><span class="p">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">SDL_KEYDOWN</span><span class="p">))</span> <span class="k">break</span><span class="p">;</span>
+    <span class="k">else</span> <span class="n">SDL_Delay</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
+
+  <span class="c1">//releases the ressources and quit</span>
+  <span class="n">SDL_DestroyWindow</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+  <span class="n">SDL_Quit</span><span class="p">();</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<h2>Result</h2>
+<p><img alt="mandelbrot set in c" src="/images/mandelbrot set in c.png"></p>
+<h2>Implementation in Python</h2>
+<p>This implementation uses the pygame module to create a window and plot the pixels and make use of Python native complex mumbers type.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">from</span> <span class="nn">pygame.locals</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">lenght</span><span class="o">=</span><span class="mi">800</span>
+<span class="n">width</span><span class="o">=</span><span class="mi">800</span>
+
+<span class="n">white</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span>
+<span class="n">black</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">gameDisplay</span><span class="o">=</span><span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="n">lenght</span><span class="p">,</span><span class="n">width</span><span class="p">))</span>
+<span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_caption</span><span class="p">(</span><span class="s1">&#39;Mandelbrot set in Python&#39;</span><span class="p">)</span>
+<span class="n">clock</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Clock</span><span class="p">()</span>
+<span class="n">pixAr</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">PixelArray</span><span class="p">(</span><span class="n">gameDisplay</span><span class="p">)</span>
+<span class="n">gameDisplay</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">black</span><span class="p">)</span>
+
+<span class="n">max_iter</span><span class="o">=</span><span class="mi">40</span>
+<span class="n">zoom</span><span class="o">=</span><span class="mf">2.5</span>
+<span class="n">colorFactor</span><span class="o">=</span><span class="mi">255</span><span class="o">/</span><span class="n">max_iter</span>
+<span class="n">lengthFactor</span><span class="o">=</span><span class="n">lenght</span><span class="o">/</span><span class="n">zoom</span>
+<span class="n">widthFactor</span><span class="o">=</span><span class="n">width</span><span class="o">/</span><span class="n">zoom</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lenght</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">)):</span>
+
+        <span class="n">c</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(((</span><span class="n">x</span><span class="o">/</span><span class="n">lengthFactor</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="p">(</span><span class="n">widthFactor</span><span class="p">)</span><span class="o">-</span><span class="mf">1.25</span> <span class="p">))</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">j</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">*</span><span class="n">z</span><span class="o">+</span><span class="n">c</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">real</span><span class="o">*</span><span class="n">z</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">z</span><span class="o">.</span><span class="n">imag</span><span class="o">*</span><span class="n">z</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="k">break</span><span class="p">;</span>
+
+        <span class="n">c</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="n">colorFactor</span>
+        <span class="n">pixAr</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">pixAr</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">width</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">QUIT</span><span class="p">:</span>
+            <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+            <span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
+
+
+<h2>Result</h2>
+<p><img alt="mandelbrot set in python" src="/images/mandelbrot set in python.png"></p>
+<h2>Going further</h2>
+<p>I you want to know more about fractals, I can only recommend the best book on this matter :</p>
+<blockquote>
+<p>Chaos: Making a New Science<br>
+James Gleick<br>
+1987<br>
+ISBN  0-7493-8606-1</p>
+</blockquote>
+<p>Enjoy !</p>
+    </div><!-- /.entry-content -->
+  </article>
+</section>
+      </section>
+      <footer>
+        <p><small>&copy; Arthur's pages &mdash; Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

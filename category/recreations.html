@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Arthur's pages - recreationsArthur's pages</title>
+
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/main.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="" class="grv-img"/></div>
+        <div class="title"><a href="http://127.0.0.1:8000/">Arthur's pages </a></div>
+        <div class="sub-title"></div>
+
+<p>
+  <div class="view"><a href="http://127.0.0.1:8000/archives.html">Archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>Follow Me</h4>
+<ul>
+    <li><a href="https://github.com/ArthurFerreira2">Github</a></li>
+    <li><a href="https://twitter.com/reinette_II">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
+</ul>
+</div>
+
+      </header>
+      <section>
+      <div class="front-title"><a href="http://127.0.0.1:8000/the-mandelbrot-set.html">The Mandelbrot set</a></div>
+<p>
+<small>
+<abbr class="published" title="2021-01-12T21:23:00+01:00">
+  Tue 12 January 2021
+</abbr> | 
+  tags: 
+    <a href="http://127.0.0.1:8000/tag/recreations.html">recreations</a>, 
+ -- (<a href="http://127.0.0.1:8000/the-mandelbrot-set.html" rel="bookmark">permalink</a>)
+</small>
+</p>      <h3>Abstract</h3>
+<p>The Mandelbrot set is a fractal object of the complex plan defined by the set of points c for which the serie defined by :</p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/cdc91da4c99377dd51c6178f427ec0892bbb5591" alt=" \begin{cases} z_0=0\\ z_{n+1}=z_n^2+c \end{cases} " style="zoom:120%;" /></p>
+<p>converges after a few iterations.</p>
+<p>I'll explain a simple algorithm to plot the Mandelbrot set and provide two implementations, one in C and the second …</p> 
+      <div class="read-more"><a href="http://127.0.0.1:8000/the-mandelbrot-set.html">read more...</a></div>
+      <hr />
+
+      </section>
+      <footer>
+        <p><small>&copy; Arthur's pages &mdash; Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

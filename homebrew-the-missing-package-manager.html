@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Homebrew, the missing package managerArthur's pages</title>
+
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/main.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="" class="grv-img"/></div>
+        <div class="title"><a href="http://127.0.0.1:8000/">Arthur's pages </a></div>
+        <div class="sub-title"></div>
+
+<p>
+  <div class="view"><a href="http://127.0.0.1:8000/archives.html">Archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>Follow Me</h4>
+<ul>
+    <li><a href="https://github.com/ArthurFerreira2">Github</a></li>
+    <li><a href="https://twitter.com/reinette_II">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
+</ul>
+</div>
+
+      </header>
+      <section>
+<section id="content" class="body">
+  <article>
+      <div class="article-title">
+        Homebrew, the missing package manager
+      </div>
+
+    <div class="entry-content">
+<p>
+<small>
+<abbr class="published" title="2021-01-07T14:02:00+01:00">
+  Thu 07 January 2021
+</abbr> | 
+  tags: 
+    <a href="http://127.0.0.1:8000/tag/brew.html">brew</a>, 
+    <a href="http://127.0.0.1:8000/tag/apple.html">apple</a>, 
+    <a href="http://127.0.0.1:8000/tag/macos.html">macOS</a>, 
+ -- (<a href="http://127.0.0.1:8000/homebrew-the-missing-package-manager.html" rel="bookmark">permalink</a>)
+</small>
+</p>      <p>If you're coming from Linux, you know about dpkg, rpm, apt, yum or pacman and how easy it is to install a new application or feature on your computer, update and maintain it against bugs and security issues.</p>
+<p>macOS don't provide such management tool, (actually it has installer(8) and softwareupdate(8) but those are not widely used) instead, users are invited to use the App Store and download software approved by Apple. You can still download software from publisher websites in the form of dmg or zip files from which you drag and drop the app to the Application folder. But at the first start, macOS might block it, suggesting that if it doesn't come from the App Store, it is dangerous. More about this at <a href="https://support.apple.com/en-au/HT202491">HT202491</a></p>
+<p>Hopefully, there's a community driven project providing a package manager, and repos from where you can install virtually everything from command line tools like htop, tree, git, programming languages like Python, Go, Rust or Julia  to the most popular OSS like Firefox, LibreOffice, Postgresql or Krita. This project is <a href="https://brew.sh">Homebrew</a>.</p>
+<h2>Installation</h2>
+<p>The installation can be break down into three simple steps :</p>
+<h4>1 - Command line tools :</h4>
+<p>Then, if you don't have installed Xcode yet, you need at the command line tools :</p>
+<div class="highlight"><pre><span></span><code>xcode-select --install
+</code></pre></div>
+
+
+<p>Wait until the tools are downloaded (~ 450MB) and fully installed - you will be prompted for your user password.</p>
+<h4>2 - Install brew :</h4>
+<p>Then, go to the <a href="brew.sh">Homebrew web site</a> and follow the instructions which were, at the time of the redaction :</p>
+<div class="highlight"><pre><span></span><code>/bin/bash -c <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+
+<h4>3 - Disable Gatekeeper :</h4>
+<p><strong>This step is optionnal and I do not recommend it</strong></p>
+<p>Allow apps from anywhere and prevent gatekeeper shouting at you every time you install a new package :</p>
+<div class="highlight"><pre><span></span><code>sudo spctl --master-disable
+</code></pre></div>
+
+
+<p>Verify by issuing <code>spctl --status</code> or open System Preferences and check the security &amp; privacy settings :</p>
+<p><img src="/images/gatekeeper.png" alt="gatekeeper" /></p>
+<p>et voilà !</p>
+<h2>Basic usage</h2>
+<p>There are two types of packages : Formulaes and Casks. The first will install command line tools, the second are graphical applications you will run from the Application folder.</p>
+<p>Exemple of a <strong>Formulae</strong> installation :</p>
+<div class="highlight"><pre><span></span><code>cold <span class="o">[</span> ~ <span class="o">]</span>$ brew install --formulae <span class="nv">htop</span>
+<span class="o">==</span>&gt; Downloading https://homebrew.bintray.com/bottles/htop-3.0.4.catalina.bottle.tar.gz
+Already downloaded: /Users/arthur/Library/Caches/Homebrew/downloads/23f37eb4677e0403e456d34b8dab9145de7560b90f38bc257fa9527df0f52b0b--htop-3.0.4.catalina.bottle.tar.gz
+<span class="o">==</span>&gt; Pouring htop-3.0.4.catalina.bottle.tar.gz
+<span class="o">==</span>&gt; Caveats
+htop requires root privileges to correctly display all running processes,
+so you will need to run <span class="sb">`</span>sudo htop<span class="sb">`</span>.
+You should be certain that you trust any software you grant root privileges.
+<span class="o">==</span>&gt; Summary
+🍺  /usr/local/Cellar/htop/3.0.4: <span class="m">12</span> files, <span class="m">267</span>.8KB
+</code></pre></div>
+
+
+<p>Example of a <strong>Cask</strong> installation :</p>
+<div class="highlight"><pre><span></span><code>cold <span class="o">[</span> ~ <span class="o">]</span>$ brew install --cask <span class="nv">firefox</span>
+<span class="o">==</span>&gt; Downloading https://download-installer.cdn.mozilla.net/pub/firefox/releases/84.0.2/mac/en-US/Firefox%2084.0.2.dmg
+<span class="c1">######################################################################## 100.0%</span>
+<span class="o">==</span>&gt; Installing Cask <span class="nv">firefox</span>
+<span class="o">==</span>&gt; Moving App <span class="s1">&#39;Firefox.app&#39;</span> to <span class="s1">&#39;/Applications/Firefox.app&#39;</span>.
+🍺  firefox was successfully installed!
+</code></pre></div>
+
+
+<p>To <strong>uninstall</strong> a package :</p>
+<div class="highlight"><pre><span></span><code>cold <span class="o">[</span> ~ <span class="o">]</span>$ brew uninstall --formulae htop
+Uninstalling /usr/local/Cellar/htop/3.0.4... <span class="o">(</span><span class="m">12</span> files, <span class="m">267</span>.8KB<span class="o">)</span>
+cold <span class="o">[</span> ~ <span class="o">]</span>$
+</code></pre></div>
+
+
+<p>To <strong>update</strong> brew</p>
+<div class="highlight"><pre><span></span><code>cold <span class="o">[</span> ~ <span class="o">]</span>$ brew update
+Updated <span class="m">1</span> tap <span class="o">(</span>homebrew/cask<span class="o">)</span>.
+<span class="o">==</span>&gt; Updated Casks
+canva
+</code></pre></div>
+
+
+<p>To <strong>upgrade</strong> all the packages :</p>
+<div class="highlight"><pre><span></span><code>cold <span class="o">[</span> ~ <span class="o">]</span>$ brew <span class="nv">upgrade</span>
+<span class="o">==</span>&gt; Upgrading <span class="m">1</span> outdated packages:
+rust <span class="m">1</span>.48.0 -&gt; <span class="m">1</span>.49.0
+<span class="o">==</span>&gt; Upgrading rust <span class="m">1</span>.48.0 -&gt; <span class="m">1</span>.49.0
+<span class="o">==</span>&gt; Downloading https://homebrew.bintray.com/bottles/rust-1.49.0.catalina.bottle.tar.gz
+<span class="o">==</span>&gt; Downloading from https://d29vzk4ow07wi7.cloudfront.net/79a71993f6bd900369575448730cc767a2dc6bf26783941f2144520f16806205?response
+<span class="c1">######################################################################## 100.0%</span>
+<span class="o">==</span>&gt; Pouring rust-1.49.0.catalina.bottle.tar.gz
+<span class="o">==</span>&gt; Caveats
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+<span class="o">==</span>&gt; Summary
+🍺  /usr/local/Cellar/rust/1.49.0: <span class="m">14</span>,553 files, <span class="m">569</span>.1MB
+Removing: /usr/local/Cellar/rust/1.48.0... <span class="o">(</span><span class="m">14</span>,251 files, <span class="m">558</span>.0MB<span class="o">)</span>
+Removing: /Users/arthur/Library/Caches/Homebrew/rust--1.48.0.catalina.bottle.tar.gz... <span class="o">(</span><span class="m">126</span>.7MB<span class="o">)</span>
+cold <span class="o">[</span> ~ <span class="o">]</span>$
+</code></pre></div>
+
+
+<p>To <strong>list</strong> the <strong>installed</strong> packages :</p>
+<div class="highlight"><pre><span></span><code>cold <span class="o">[</span> ~ <span class="o">]</span>$ brew list --formulae
+autoconf           ipcalc             nmap
+automake           isl                openssl@1.1
+bash-completion    jpeg               pcre2
+boost              libmodplug         pkg-config
+brogue             libmpc             python@3.9
+cmake              libogg             ranger
+coreutils          libpcap            readline
+cowsay             libpng             rogue
+discount           libssh2            rust
+fortune            libtiff            sdl2
+gcc                libtool            sdl2_image
+gdbm               libvorbis          sdl2_mixer
+gettext            lolcat             sqlite
+gifsicle           make               tcl-tk
+git                micro              tcpdump
+gmp                mpfr               tree
+go                 mtr                watch
+htop               ncurses            webp
+icu4c              nethacked          xz
+
+cold <span class="o">[</span> ~ <span class="o">]</span>$ brew list --cask
+caffeine           Julia              tigervnc-viewer
+firefox            qlmarkdown         typora
+gns3               rectangle
+</code></pre></div>
+
+
+<h2>bash completion</h2>
+<p>Add to your ~/bashrc :</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="nb">type</span> brew <span class="p">&amp;</span>&gt;/dev/null<span class="p">;</span> <span class="k">then</span>
+  <span class="nv">HOMEBREW_PREFIX</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>brew --prefix<span class="k">)</span><span class="s2">&quot;</span>
+  <span class="k">if</span> <span class="o">[[</span> -r <span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOMEBREW_PREFIX</span><span class="si">}</span><span class="s2">/etc/profile.d/bash_completion.sh&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">source</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOMEBREW_PREFIX</span><span class="si">}</span><span class="s2">/etc/profile.d/bash_completion.sh&quot;</span>
+  <span class="k">else</span>
+    <span class="k">for</span> COMPLETION in <span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOMEBREW_PREFIX</span><span class="si">}</span><span class="s2">/etc/bash_completion.d/&quot;</span>*<span class="p">;</span> <span class="k">do</span>
+      <span class="o">[[</span> -r <span class="s2">&quot;</span><span class="nv">$COMPLETION</span><span class="s2">&quot;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">source</span> <span class="s2">&quot;</span><span class="nv">$COMPLETION</span><span class="s2">&quot;</span>
+    <span class="k">done</span>
+  <span class="k">fi</span>
+<span class="k">fi</span>
+</code></pre></div>
+
+
+<h2>Advanced usage</h2>
+<p>Formulaes are installed in /usr/local/cellar and binaries linked in /usr/local/bin</p>
+<p>you can unlink a particular package using brew unlink</p>
+<h4>Using brew over a proxy :</h4>
+<p>Set the ftp_proxy, http_proxy, https_proxy environment vars to point to your proxy server. If they all point to the same proxy, you can set all_proxy instead.</p>
+<div class="highlight"><pre><span></span><code>brew leaves &gt; my_brews.txt
+xargs brew install &lt; brew.txt
+</code></pre></div>
+
+
+<h2>Conclusion</h2>
+<p>You already fell like at home don't you ?</p>
+    </div><!-- /.entry-content -->
+  </article>
+</section>
+      </section>
+      <footer>
+        <p><small>&copy; Arthur's pages &mdash; Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Revert to bashArthur's pages</title>
+
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/main.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="" class="grv-img"/></div>
+        <div class="title"><a href="http://127.0.0.1:8000/">Arthur's pages </a></div>
+        <div class="sub-title"></div>
+
+<p>
+  <div class="view"><a href="http://127.0.0.1:8000/archives.html">Archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>Follow Me</h4>
+<ul>
+    <li><a href="https://github.com/ArthurFerreira2">Github</a></li>
+    <li><a href="https://twitter.com/reinette_II">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
+</ul>
+</div>
+
+      </header>
+      <section>
+<section id="content" class="body">
+  <article>
+      <div class="article-title">
+        Revert to bash
+      </div>
+
+    <div class="entry-content">
+<p>
+<small>
+<abbr class="published" title="2021-01-06T19:12:00+01:00">
+  Wed 06 January 2021
+</abbr> | 
+  tags: 
+    <a href="http://127.0.0.1:8000/tag/apple.html">apple</a>, 
+    <a href="http://127.0.0.1:8000/tag/macos.html">macOS</a>, 
+ -- (<a href="http://127.0.0.1:8000/revert-to-bash.html" rel="bookmark">permalink</a>)
+</small>
+</p>      <p>I was quite surprised to find zsh as default shell (root still logs into sh) with Catalina. I know very little about zsh. It seems to be quite popular and the way to go. But I have too many bash scripts to maintain and I need the venerable bash as my default shell.</p>
+<h2>Temporary switch</h2>
+<p>Of course, the shebang still points to the right shell interpreter and I can run these scripts from zsh. But, time to time, I need to invoke them from a script in the command line or just source some functions. I also develop locally scripts that will be deployed on servers where zsh is not installed and I found myself using more and more often :</p>
+<div class="highlight"><pre><span></span><code><span class="nb">exec</span> bash -l
+</code></pre></div>
+
+
+<p>... that at the end I decided to switch permanently.</p>
+<h2>Permanent switch</h2>
+<p>To make bash your default login shell, just open a fresh terminal and type :</p>
+<div class="highlight"><pre><span></span><code>chsh bash -s /bin/bash
+<span class="nb">exec</span> bash -l
+</code></pre></div>
+
+
+<h2>Where is my Run Commands (rc) file ?</h2>
+<p>Every time you start a bash shell as a <strong>login</strong> shell, bash runs, in this order :</p>
+<div class="highlight"><pre><span></span><code>/etc/profile
+/etc/bashrc
+~/.bash_profile
+~/.bashrc <span class="c1"># if called from the above script</span>
+</code></pre></div>
+
+
+<p>If the bash is invoked from a script, or is executed without the <code>--login or -l</code> option, only <code>~/.bashrc</code> is invoked.</p>
+<p>I'm sharing here a subset of my files so you can easily switch back to bash</p>
+<h6>~/.bash_profile (invoked only from a login shell):</h6>
+<div class="highlight"><pre><span></span><code><span class="c1"># Get the aliases and functions</span>
+<span class="k">if</span> <span class="o">[</span> -f ~/.bashrc <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    . ~/.bashrc
+<span class="k">fi</span>
+
+<span class="nb">export</span> <span class="nv">EDITOR</span><span class="o">=</span>vim
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+</code></pre></div>
+
+
+<h6>~/.bashrc :</h6>
+<div class="highlight"><pre><span></span><code><span class="nb">alias</span> <span class="nv">vi</span><span class="o">=</span>vim
+<span class="nb">alias</span> <span class="nv">ls</span><span class="o">=</span><span class="s1">&#39;ls -G&#39;</span>
+<span class="nb">alias</span> <span class="nv">ll</span><span class="o">=</span><span class="s1">&#39;ls -l&#39;</span>
+<span class="nb">alias</span> <span class="nv">la</span><span class="o">=</span><span class="s1">&#39;ls -la&#39;</span>
+
+<span class="c1"># iterm2 shell integration :</span>
+<span class="nb">test</span> -e <span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.iterm2_shell_integration.bash&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">source</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.iterm2_shell_integration.bash&quot;</span>
+</code></pre></div>
+
+
+<h2>Version</h2>
+<p>The bash version shipped with Catalina is a bit outdated.</p>
+<div class="highlight"><pre><span></span><code>cold <span class="o">[</span> ~ <span class="o">]</span>$ bash --version
+GNU bash, version <span class="m">3</span>.2.57<span class="o">(</span><span class="m">1</span><span class="o">)</span>-release <span class="o">(</span>x86_64-apple-darwin19<span class="o">)</span>
+Copyright <span class="o">(</span>C<span class="o">)</span> <span class="m">2007</span> Free Software Foundation, Inc.
+</code></pre></div>
+
+
+<p>Until now, I had no issue running my old scripts. And I don't plan to upgrade the shell. Instead I think to switch slowly to zsh and migrate the scripts.</p>
+    </div><!-- /.entry-content -->
+  </article>
+</section>
+      </section>
+      <footer>
+        <p><small>&copy; Arthur's pages &mdash; Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
