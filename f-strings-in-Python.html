@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>f-strings in PythonArthur's pages</title>
+
+    <link rel="stylesheet" href="https://arthurferreira2.github.io/theme/css/main.css">
+    <link rel="stylesheet" href="https://arthurferreira2.github.io/theme/css/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div><img src="" class="grv-img"/></div>
+        <div class="title"><a href="https://arthurferreira2.github.io/">Arthur's pages </a></div>
+        <div class="sub-title"></div>
+
+<p>
+  <div class="view"><a href="https://arthurferreira2.github.io/archives.html">Archives</a></div>
+</p>
+
+<!-- Social links -->
+<div class="social">
+<h4>Follow Me</h4>
+<ul>
+    <li><a href="https://github.com/ArthurFerreira2">Github</a></li>
+    <li><a href="https://twitter.com/reinette_II">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
+</ul>
+</div>
+
+      </header>
+      <section>
+<section id="content" class="body">
+  <article>
+      <div class="article-title">
+        f-strings in Python
+      </div>
+
+    <div class="entry-content">
+<p>
+<small>
+<abbr class="published" title="2021-01-13T10:04:00+01:00">
+  Wed 13 January 2021
+</abbr> | 
+  tags: 
+    <a href="https://arthurferreira2.github.io/tag/python.html">Python</a>, 
+    <a href="https://arthurferreira2.github.io/tag/programming.html">programming</a>, 
+ -- (<a href="https://arthurferreira2.github.io/f-strings-in-Python.html" rel="bookmark">permalink</a>)
+</small>
+</p>      <h2>Introduction</h2>
+<p>Traditionally, formatting a string in Python, involved the <code>%</code> operator :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">qty</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">price</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;mugs&quot;</span><span class="p">,</span> <span class="mf">15.3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;The cost for </span><span class="si">%d</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> is $</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">qty</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">qty</span> <span class="o">*</span> <span class="n">price</span><span class="p">)</span>
+<span class="s1">&#39;The cost for 12 mugs is $183.60&#39;</span>
+</code></pre></div>
+
+
+<p>Then, python introduced the <code>format</code> method to the <code>str</code> object and we could use :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">qty</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">price</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;mugs&quot;</span><span class="p">,</span> <span class="mf">15.3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;The cost for </span><span class="si">{:d}</span><span class="s2"> </span><span class="si">{:s}</span><span class="s2"> is $</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">qty</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">qty</span> <span class="o">*</span> <span class="n">price</span><span class="p">)</span>
+<span class="s1">&#39;The cost for 12 mugs is $183.60&#39;</span>
+</code></pre></div>
+
+
+<p>Which, you will convey, is still a bit cumbersome</p>
+<p><strong>f-string</strong>, introduced with Python 3.6, provides a third way.</p>
+<h2>How it works</h2>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">qty</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">price</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;mugs&quot;</span><span class="p">,</span> <span class="mf">15.3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">&quot;The cost for </span><span class="si">{</span><span class="n">qty</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2"> is $</span><span class="si">{</span><span class="n">qty</span> <span class="o">*</span> <span class="n">price</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="s1">&#39;The cost for 12 mugs is $183.60&#39;</span>
+</code></pre></div>
+
+
+<h2>Conclusion</h2>
+<p>Python developers were limited to the version of the interpreter on the target systems. For this reason new features of the language were not immediately adopted.
+This caused transition from 2.x to 3.x long and complex.
+Today, we all are using Python 3, but a lot of systems are still running outdated versions of Python 3.</p>
+<p>I recently decommissioned our last server under Whezzy, but still have tons of them running stock Jessy.</p>
+<table>
+<thead>
+<tr>
+<th align="center">year</th>
+<th>version</th>
+<th>name</th>
+<th>python 2</th>
+<th>python 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">2013</td>
+<td>Debian 7</td>
+<td>Whezzy</td>
+<td>2.7 (default)</td>
+<td>3.2</td>
+</tr>
+<tr>
+<td align="center">2015</td>
+<td>Debian 8</td>
+<td>Jessie</td>
+<td>2.7 (default)</td>
+<td>3.4</td>
+</tr>
+<tr>
+<td align="center">2017</td>
+<td>Debian 9</td>
+<td>Stretch</td>
+<td>python 2.7 (default)</td>
+<td>3.5</td>
+</tr>
+<tr>
+<td align="center">2019</td>
+<td>Debian 10</td>
+<td>Buster</td>
+<td>2.7</td>
+<td>3.7 (default)</td>
+</tr>
+</tbody>
+</table>
+<p>But this shouldn't stop you from using new features.
+Virtual environments are now easily deployed, docker can also help shipping applications with the exact language version the application was developed and tested.</p>
+    </div><!-- /.entry-content -->
+  </article>
+</section>
+      </section>
+      <footer>
+        <p><small>&copy; Arthur's pages &mdash; Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!-- Scale fix -->
+    <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+      
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+      
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
