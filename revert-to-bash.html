@@ -1,58 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Revert to bashArthur's pages</title>
-
-    <link rel="stylesheet" href="https://arthurferreira2.github.io/theme/css/main.css">
-    <link rel="stylesheet" href="https://arthurferreira2.github.io/theme/css/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <div><img src="" class="grv-img"/></div>
-        <div class="title"><a href="https://arthurferreira2.github.io/">Arthur's pages </a></div>
-        <div class="sub-title"></div>
-
-<p>
-  <div class="view"><a href="https://arthurferreira2.github.io/archives.html">Archives</a></div>
-</p>
-
-<!-- Social links -->
-<div class="social">
-<h4>Follow Me</h4>
-<ul>
-    <li><a href="https://github.com/ArthurFerreira2">Github</a></li>
-    <li><a href="https://twitter.com/reinette_II">Twitter</a></li>
-    <li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
-</ul>
-</div>
-
-      </header>
-      <section>
-<section id="content" class="body">
-  <article>
-      <div class="article-title">
-        Revert to bash
-      </div>
-
-    <div class="entry-content">
-<p>
-<small>
-<abbr class="published" title="2020-11-06T19:12:00+01:00">
-  Fri 06 November 2020
-</abbr> | 
-  tags: 
-    <a href="https://arthurferreira2.github.io/tag/apple.html">apple</a>, 
-    <a href="https://arthurferreira2.github.io/tag/macos.html">macOS</a>, 
- -- (<a href="https://arthurferreira2.github.io/revert-to-bash.html" rel="bookmark">permalink</a>)
-</small>
-</p>      <p>I was quite surprised to find zsh as default shell (root still logs into sh) with Catalina. I know very little about zsh. It seems to be quite popular and the way to go. But I have too many bash scripts to maintain and I need the venerable bash as my default shell.</p>
+<head>
+	<meta charset="utf-8">
+	<title>Revert to bash — Arthur's pages</title>
+	<meta name="description" content="Title: Revert to bash; Date: 2020-11-06; Author: Arthur Ferreira">
+	<meta name="author" content="Arthur Ferreira">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+		<![endif]-->
+	<link href="/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/css/local.css" rel="stylesheet">
+	<link href="/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="/">Arthur's pages</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">Revert to bash</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">Arthur Ferreira</h4>
+		</span>
+		<time datetime="2020-11-06T19:12:00+01:00" itemprop="datePublished">Fri 06 November 2020</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="/category/admin.html" rel="category">Admin</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="/tag/apple.html" rel="tag">apple</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="/tag/macos.html" rel="tag">macOS</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><p>I was quite surprised to find zsh as default shell (root still logs into sh) with Catalina. I know very little about zsh. It seems to be quite popular and the way to go. But I have too many bash scripts to maintain and I need the venerable bash as my default shell.</p>
 <h2>Temporary switch</h2>
 <p>Of course, the shebang still points to the right shell interpreter and I can run these scripts from zsh. But, time to time, I need to invoke them from a script in the command line or just source some functions. I also develop locally scripts that will be deployed on servers where zsh is not installed and I found myself using more and more often :</p>
 <div class="highlight"><pre><span></span><code><span class="nb">exec</span> bash -l
@@ -108,37 +104,76 @@ Copyright <span class="o">(</span>C<span class="o">)</span> <span class="m">2007
 </code></pre></div>
 
 
-<p>Until now, I had no issue running my old scripts. And I don't plan to upgrade the shell. Instead I think to switch slowly to zsh and migrate the scripts.</p>
-    </div><!-- /.entry-content -->
-  </article>
-</section>
-      </section>
-      <footer>
-        <p><small>&copy; Arthur's pages &mdash; Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <!-- Scale fix -->
-    <script>
-      var metas = document.getElementsByTagName('meta');
-      var i;
-      
-      if (navigator.userAgent.match(/iPhone/i)) {
-        for (i=0; i<metas.length; i++) {
-          if (metas[i].name == "viewport") {
-            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
-          }
-        }
-      
-        document.addEventListener("gesturestart", gestureStart, false);
-      }
-
-      function gestureStart() {
-        for (i=0; i<metas.length; i++) {
-          if (metas[i].name == "viewport") {
-            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
-          }
-        }
-      }
-    </script>
-  </body>
+<p>Until now, I had no issue running my old scripts. And I don't plan to upgrade the shell. Instead I think to switch slowly to zsh and migrate the scripts.</p></div>
+	<hr>
+	<h2>Comments</h2>
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="">Arthur's pages</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://github.com/ArthurFerreira2">Github</a></li>
+							<li><a href="https://twitter.com/reinette_II">Twitter</a></li>
+							<li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="/category/admin.html">Admin (4)</a></li>
+							<li><a href="/category/code.html">Code (1)</a></li>
+							<li><a href="/category/recreations.html">recreations (1)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://github.com/ArthurFerreira2">Github</a></li>
+							<li><a href="https://twitter.com/reinette_II">Twitter</a></li>
+							<li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Arthur Ferreira 2021</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
 </html>

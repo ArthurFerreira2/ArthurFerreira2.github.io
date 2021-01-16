@@ -1,59 +1,55 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>f-strings in PythonArthur's pages</title>
-
-    <link rel="stylesheet" href="https://arthurferreira2.github.io/theme/css/main.css">
-    <link rel="stylesheet" href="https://arthurferreira2.github.io/theme/css/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <div><img src="" class="grv-img"/></div>
-        <div class="title"><a href="https://arthurferreira2.github.io/">Arthur's pages </a></div>
-        <div class="sub-title"></div>
-
-<p>
-  <div class="view"><a href="https://arthurferreira2.github.io/archives.html">Archives</a></div>
-</p>
-
-<!-- Social links -->
-<div class="social">
-<h4>Follow Me</h4>
-<ul>
-    <li><a href="https://github.com/ArthurFerreira2">Github</a></li>
-    <li><a href="https://twitter.com/reinette_II">Twitter</a></li>
-    <li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
-</ul>
-</div>
-
-      </header>
-      <section>
-<section id="content" class="body">
-  <article>
-      <div class="article-title">
-        f-strings in Python
-      </div>
-
-    <div class="entry-content">
-<p>
-<small>
-<abbr class="published" title="2019-07-13T10:04:00+02:00">
-  Sat 13 July 2019
-</abbr> | 
-  tags: 
-    <a href="https://arthurferreira2.github.io/tag/python.html">Python</a>, 
-    <a href="https://arthurferreira2.github.io/tag/programming.html">programming</a>, 
- -- (<a href="https://arthurferreira2.github.io/f-strings-in-Python.html" rel="bookmark">permalink</a>)
-</small>
-</p>      <h2>Introduction</h2>
-<p>Traditionally, formatting a string in Python, involved the <code>%</code> operator :</p>
+<head>
+	<meta charset="utf-8">
+	<title>f-strings in Python — Arthur's pages</title>
+	<meta name="description" content="Title: f-strings in Python; Date: 2017-03-13; Author: Arthur Ferreira">
+	<meta name="author" content="Arthur Ferreira">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+		<![endif]-->
+	<link href="/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/css/local.css" rel="stylesheet">
+	<link href="/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="/">Arthur's pages</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">f-strings in Python</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">Arthur Ferreira</h4>
+		</span>
+		<time datetime="2017-03-13T10:04:00+01:00" itemprop="datePublished">Mon 13 March 2017</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="/category/code.html" rel="category">Code</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="/tag/python.html" rel="tag">Python</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="/tag/programming.html" rel="tag">programming</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><h2>Introduction</h2>
+<p>Historically, formatting a string in Python, involved the <code>%</code> operator :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">qty</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">price</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;mugs&quot;</span><span class="p">,</span> <span class="mf">15.3</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;The cost for </span><span class="si">%d</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> is $</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">qty</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">qty</span> <span class="o">*</span> <span class="n">price</span><span class="p">)</span>
 <span class="s1">&#39;The cost for 12 mugs is $183.60&#39;</span>
@@ -70,17 +66,34 @@
 <p>Which, you will convey, is still a bit cumbersome</p>
 <p><strong>f-string</strong>, introduced with Python 3.6, provides a third way.</p>
 <h2>How it works</h2>
+<p>with f-strings, you use curly brackets to inject an expression into a strings
+that expression will be interpolated.
+The expression can be anything and formatted the same as with the format method :</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">qty</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">price</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;mugs&quot;</span><span class="p">,</span> <span class="mf">15.3</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">&quot;The cost for </span><span class="si">{</span><span class="n">qty</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2"> is $</span><span class="si">{</span><span class="n">qty</span> <span class="o">*</span> <span class="n">price</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="s1">&#39;The cost for 12 mugs is $183.60&#39;</span>
 </code></pre></div>
 
 
+<p>Noticed the f prefix ? - this is how you tell Python you are using an f-string and here is what happens if you forget it :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">qty</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">price</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;mugs&quot;</span><span class="p">,</span> <span class="mf">15.3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;The cost for </span><span class="si">{qty}</span><span class="s2"> </span><span class="si">{item}</span><span class="s2"> is ${qty * price:.2f}&quot;</span>
+<span class="s1">&#39;The cost for </span><span class="si">{qty}</span><span class="s1"> </span><span class="si">{item}</span><span class="s1"> is ${qty * price:.2f}&#39;</span>
+</code></pre></div>
+
+
+<p>make sense ?</p>
+<p>here is another quick example :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">bill</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;qty&#39;</span> <span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;item&#39;</span> <span class="p">:</span> <span class="s1">&#39;mugs&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span> <span class="p">:</span> <span class="mf">15.3</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">&quot;The cost for </span><span class="si">{</span><span class="n">bill</span><span class="p">[</span><span class="s1">&#39;qty&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">bill</span><span class="p">[</span><span class="s1">&#39;item&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> is $</span><span class="si">{</span><span class="n">bill</span><span class="p">[</span><span class="s1">&#39;qty&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">bill</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="s1">&#39;The cost for 12 mugs is $183.60&#39;</span>
+</code></pre></div>
+
+
 <h2>Conclusion</h2>
-<p>Python developers were limited to the version of the interpreter on the target systems. For this reason new features of the language were not immediately adopted.
-This caused transition from 2.x to 3.x long and complex.
-Today, we all are using Python 3, but a lot of systems are still running outdated versions of Python 3.</p>
-<p>I recently decommissioned our last server under Whezzy, but still have tons of them running stock Jessy.</p>
+<p>You can only use f-strings on Python 3.6 or higher.
+Today, we have all transitioned to Python 3, but a lot of systems are still running outdated versions of Python 3.
+I recently decommissioned our last VM under Squeeze, but still have tons of them running stock Whezzy and we are not yet ready for Stretch.</p>
 <table>
 <thead>
 <tr>
@@ -92,6 +105,13 @@ Today, we all are using Python 3, but a lot of systems are still running outdate
 </tr>
 </thead>
 <tbody>
+<tr>
+<td align="center">2011</td>
+<td>Debian 6</td>
+<td>Squeeze</td>
+<td>2.6 (default)</td>
+<td>3.1</td>
+</tr>
 <tr>
 <td align="center">2013</td>
 <td>Debian 7</td>
@@ -113,47 +133,80 @@ Today, we all are using Python 3, but a lot of systems are still running outdate
 <td>python 2.7 (default)</td>
 <td>3.5</td>
 </tr>
-<tr>
-<td align="center">2019</td>
-<td>Debian 10</td>
-<td>Buster</td>
-<td>2.7</td>
-<td>3.7 (default)</td>
-</tr>
 </tbody>
 </table>
-<p>But this shouldn't stop you from using new features.
+<p>But this shouldn't stop you from using new Python features.
 Virtual environments are now easily deployed, docker can also help shipping applications with the exact language version the application was developed and tested.</p>
-    </div><!-- /.entry-content -->
-  </article>
-</section>
-      </section>
-      <footer>
-        <p><small>&copy; Arthur's pages &mdash; Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <!-- Scale fix -->
-    <script>
-      var metas = document.getElementsByTagName('meta');
-      var i;
-      
-      if (navigator.userAgent.match(/iPhone/i)) {
-        for (i=0; i<metas.length; i++) {
-          if (metas[i].name == "viewport") {
-            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
-          }
-        }
-      
-        document.addEventListener("gesturestart", gestureStart, false);
-      }
-
-      function gestureStart() {
-        for (i=0; i<metas.length; i++) {
-          if (metas[i].name == "viewport") {
-            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
-          }
-        }
-      }
-    </script>
-  </body>
+<p>If you can use virtual envs or using Docker, then upgrade to 3.6 and start using f-strings right now !</p></div>
+	<hr>
+	<h2>Comments</h2>
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="">Arthur's pages</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://github.com/ArthurFerreira2">Github</a></li>
+							<li><a href="https://twitter.com/reinette_II">Twitter</a></li>
+							<li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="/category/admin.html">Admin (4)</a></li>
+							<li><a href="/category/code.html">Code (1)</a></li>
+							<li><a href="/category/recreations.html">recreations (1)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://github.com/ArthurFerreira2">Github</a></li>
+							<li><a href="https://twitter.com/reinette_II">Twitter</a></li>
+							<li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Arthur Ferreira 2021</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
 </html>

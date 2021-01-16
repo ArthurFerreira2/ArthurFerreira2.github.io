@@ -1,57 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>The Mandelbrot setArthur's pages</title>
-
-    <link rel="stylesheet" href="https://arthurferreira2.github.io/theme/css/main.css">
-    <link rel="stylesheet" href="https://arthurferreira2.github.io/theme/css/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <div><img src="" class="grv-img"/></div>
-        <div class="title"><a href="https://arthurferreira2.github.io/">Arthur's pages </a></div>
-        <div class="sub-title"></div>
-
-<p>
-  <div class="view"><a href="https://arthurferreira2.github.io/archives.html">Archives</a></div>
-</p>
-
-<!-- Social links -->
-<div class="social">
-<h4>Follow Me</h4>
-<ul>
-    <li><a href="https://github.com/ArthurFerreira2">Github</a></li>
-    <li><a href="https://twitter.com/reinette_II">Twitter</a></li>
-    <li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
-</ul>
-</div>
-
-      </header>
-      <section>
-<section id="content" class="body">
-  <article>
-      <div class="article-title">
-        The Mandelbrot set
-      </div>
-
-    <div class="entry-content">
-<p>
-<small>
-<abbr class="published" title="2017-12-11T21:23:00+01:00">
-  Mon 11 December 2017
-</abbr> | 
-  tags: 
-    <a href="https://arthurferreira2.github.io/tag/recreations.html">recreations</a>, 
- -- (<a href="https://arthurferreira2.github.io/the-mandelbrot-set.html" rel="bookmark">permalink</a>)
-</small>
-</p>      <h2>Abstract</h2>
+<head>
+	<meta charset="utf-8">
+	<title>The Mandelbrot set — Arthur's pages</title>
+	<meta name="description" content="Title: The Mandelbrot set; Date: 2017-12-11; Author: Arthur Ferreira">
+	<meta name="author" content="Arthur Ferreira">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+		<![endif]-->
+	<link href="/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/css/local.css" rel="stylesheet">
+	<link href="/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="/">Arthur's pages</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">The Mandelbrot set</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">Arthur Ferreira</h4>
+		</span>
+		<time datetime="2017-12-11T21:23:00+01:00" itemprop="datePublished">Mon 11 December 2017</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="/category/recreations.html" rel="category">recreations</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="/tag/recreations.html" rel="tag">recreations</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><h2>Abstract</h2>
 <p>The Mandelbrot set is a fractal object of the complex plan defined by the set of points c for which the serie defined by :</p>
 <p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/cdc91da4c99377dd51c6178f427ec0892bbb5591" alt=" \begin{cases} z_0=0\\ z_{n+1}=z_n^2+c \end{cases} " style="zoom:120%;" /></p>
 <p>converges after a few iterations.</p>
@@ -208,37 +202,76 @@ James Gleick<br>
 1987<br>
 ISBN  0-7493-8606-1</p>
 </blockquote>
-<p>Enjoy !</p>
-    </div><!-- /.entry-content -->
-  </article>
-</section>
-      </section>
-      <footer>
-        <p><small>&copy; Arthur's pages &mdash; Theme based on Sundown by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <!-- Scale fix -->
-    <script>
-      var metas = document.getElementsByTagName('meta');
-      var i;
-      
-      if (navigator.userAgent.match(/iPhone/i)) {
-        for (i=0; i<metas.length; i++) {
-          if (metas[i].name == "viewport") {
-            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
-          }
-        }
-      
-        document.addEventListener("gesturestart", gestureStart, false);
-      }
-
-      function gestureStart() {
-        for (i=0; i<metas.length; i++) {
-          if (metas[i].name == "viewport") {
-            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
-          }
-        }
-      }
-    </script>
-  </body>
+<p>Enjoy !</p></div>
+	<hr>
+	<h2>Comments</h2>
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="">Arthur's pages</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://github.com/ArthurFerreira2">Github</a></li>
+							<li><a href="https://twitter.com/reinette_II">Twitter</a></li>
+							<li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="/category/admin.html">Admin (4)</a></li>
+							<li><a href="/category/code.html">Code (1)</a></li>
+							<li><a href="/category/recreations.html">recreations (1)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://github.com/ArthurFerreira2">Github</a></li>
+							<li><a href="https://twitter.com/reinette_II">Twitter</a></li>
+							<li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Arthur Ferreira 2021</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
 </html>
