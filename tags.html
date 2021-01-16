@@ -1,130 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Tags — Arthur's pages</title>
-	<meta name="description" content="The Tags page lists all tags used to classify the posts. Each post has at least one tag helping readers find out easily what they are looking for.">
-	<meta name="author" content="Arthur Ferreira">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-	<!--[if lt IE 9]>
-		<script src="/theme/html5.js"></script>
-		<![endif]-->
-	<link href="/theme/css/ipython.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
-	<link href="/theme/css/local.css" rel="stylesheet">
-	<link href="/theme/css/pygments.css" rel="stylesheet">
-<style type="text/css" media="screen">
-ul.tagcloud {
-	list-style: none;
-	padding: 0;
-	padding-top: 7em;
-	padding-bottom: 7em;
-	width: 50%;
-	margin-left: 25%;
-}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.prod.9e9d5ce754.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 
-ul.tagcloud li {
-	display: inline-block;
-}
+        <meta name="author" content="Arthur Ferreira" />
 
-li.tag-1 {
-	font-size: 150%;
-}
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
 
-li.tag-2 {
-	font-size: 120%;
-}
+<meta property="og:title" content="All Tags · Arthur&#39;s pages"/>
+<meta name="twitter:title" content="All Tags · Arthur&#39;s pages">
+<meta property="og:url" content="/tags.html" />
+<meta property="og:description" content="All tags used in the Arthur&#39;s pages blog" />
+<meta name="twitter:description" content="All tags used in the Arthur&#39;s pages blog">
+<meta property="og:site_name" content="Arthur&#39;s pages" />
+<meta property="og:article:author" content="Arthur Ferreira" />
+        <title>All Tags · Arthur&#39;s pages
+</title>
 
-li.tag-3 {
-	font-size: 100%;
-}
 
-li.tag-4 {
-	font-size: 80%;
-}
-</style>
-</head>
-<body>
-<div class="container">
-	<div class="page-header">
-		<h1><a href="/">Arthur's pages</a>
-			<br>	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-<h1>Tags</h1>
-<div class="text-center">
-<ul class="tagcloud">
-</ul>
+
+    </head>
+    <body>
+        <div id="content">
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="/"><span class=site-name>Arthur's pages</span></a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right top-menu">
+                                <li >
+                                    <a href=
+                                       "/"
+                                    >Home</a>
+                                </li>
+                                <li ><a href="/pages/about.html">About</a></li>
+                                <li ><a href="/categories.html">Categories</a></li>
+                                <li  class="active"><a href="/tags.html">Tags</a></li>
+                                <li ><a href="/archives.html">Archives</a></li>
+                                <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span1"></div>
+                    <div class="span10">
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="/tags.html">All Tags</a></h1>
+    </header>
 </div>
-		</div>
-	</div> 	<!-- <hr> -->
-</div> <!-- /container -->
-<footer class="aw-footer bg-danger">
-	<div class="container"> <!-- footer -->
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="row">
-					<div class="col-md-3">
-						<h4>Navigation</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="">Arthur's pages</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Author</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="https://github.com/ArthurFerreira2">Github</a></li>
-							<li><a href="https://twitter.com/reinette_II">Twitter</a></li>
-							<li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Categories</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="/category/admin.html">Admin (4)</a></li>
-							<li><a href="/category/code.html">Code (1)</a></li>
-							<li><a href="/category/recreations.html">recreations (1)</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Links</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="https://github.com/ArthurFerreira2">Github</a></li>
-							<li><a href="https://twitter.com/reinette_II">Twitter</a></li>
-							<li><a href="https://www.linkedin.com/in/arthur-ferreira-978046193/">Linkedin</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
-<div class="container">
-	<div class="row">
-		<div class="col-md-12 text-center center-block aw-bottom">
-			<p>&copy; Arthur Ferreira 2021</p>
-			<p>Powered by Pelican</p>
-		</div>
-	</div>
+<div class="row-fluid">
+    <div class="span8 offset2">
+        <form class="form-search">
+            <input type="text" class="input-medium search-query filterinput" placeholder="Find a tag">
+        </form>
+        <ul class="list-of-tags">
+            <li>
+            <a href="#apple-ref">apple<span class="superscript">3</span></a>
+            </li>
+            <li>
+            <a href="#brew-ref">brew<span class="superscript">1</span></a>
+            </li>
+            <li>
+            <a href="#html-ref">html<span class="superscript">1</span></a>
+            </li>
+            <li>
+            <a href="#macos-ref">macOS<span class="superscript">3</span></a>
+            </li>
+            <li>
+            <a href="#programming-ref">programming<span class="superscript">1</span></a>
+            </li>
+            <li>
+            <a href="#python-ref">Python<span class="superscript">1</span></a>
+            </li>
+            <li>
+            <a href="#recreations-ref">recreations<span class="superscript">1</span></a>
+            </li>
+            <li>
+            <a href="#web-ref">web<span class="superscript">1</span></a>
+            </li>
+        </ul>
+    </div>
 </div>
-<!-- JavaScript -->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$("div.collapseheader").click(function () {
-		$header = $(this).children("span").first();
-		$codearea = $(this).children(".input_area");
-		$codearea.slideToggle(500, function () {
-			$header.text(function () {
-				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
-			});
-		});
-	});
-});
+
+<div class="row-fluid">
+    <div class="span8 offset2">
+        <h2 id="apple-ref" class="tag-title">apple</h2>
+        <ul class="list-articles-under-tag-category">
+            <li itemscope>
+                <a href="/revert-to-bash.html">
+                    Revert to bash
+                </a>
+                <time itemprop="dateCreated" datetime="2020-11-06T19:12:00+01:00">
+                    Fri 06 November 2020
+                </time>
+            </li>
+            <li itemscope>
+                <a href="/a-better-terminal.html">
+                    A better terminal
+                </a>
+                <time itemprop="dateCreated" datetime="2018-01-05T10:21:00+01:00">
+                    Fri 05 January 2018
+                </time>
+            </li>
+            <li itemscope>
+                <a href="/homebrew-the-missing-package-manager.html">
+                    Homebrew, the missing package manager
+                </a>
+                <time itemprop="dateCreated" datetime="2017-11-07T14:02:00+01:00">
+                    Tue 07 November 2017
+                </time>
+            </li>
+        </ul>
+
+        <h2 id="brew-ref" class="tag-title">brew</h2>
+        <ul class="list-articles-under-tag-category">
+            <li itemscope>
+                <a href="/homebrew-the-missing-package-manager.html">
+                    Homebrew, the missing package manager
+                </a>
+                <time itemprop="dateCreated" datetime="2017-11-07T14:02:00+01:00">
+                    Tue 07 November 2017
+                </time>
+            </li>
+        </ul>
+
+        <h2 id="html-ref" class="tag-title">html</h2>
+        <ul class="list-articles-under-tag-category">
+            <li itemscope>
+                <a href="/using-pelican-to-generate-a-static-site.html">
+                    Using Pelican to generate a static site
+                </a>
+                <time itemprop="dateCreated" datetime="2018-01-11T21:37:00+01:00">
+                    Thu 11 January 2018
+                </time>
+            </li>
+        </ul>
+
+        <h2 id="macos-ref" class="tag-title">macOS</h2>
+        <ul class="list-articles-under-tag-category">
+            <li itemscope>
+                <a href="/revert-to-bash.html">
+                    Revert to bash
+                </a>
+                <time itemprop="dateCreated" datetime="2020-11-06T19:12:00+01:00">
+                    Fri 06 November 2020
+                </time>
+            </li>
+            <li itemscope>
+                <a href="/a-better-terminal.html">
+                    A better terminal
+                </a>
+                <time itemprop="dateCreated" datetime="2018-01-05T10:21:00+01:00">
+                    Fri 05 January 2018
+                </time>
+            </li>
+            <li itemscope>
+                <a href="/homebrew-the-missing-package-manager.html">
+                    Homebrew, the missing package manager
+                </a>
+                <time itemprop="dateCreated" datetime="2017-11-07T14:02:00+01:00">
+                    Tue 07 November 2017
+                </time>
+            </li>
+        </ul>
+
+        <h2 id="programming-ref" class="tag-title">programming</h2>
+        <ul class="list-articles-under-tag-category">
+            <li itemscope>
+                <a href="/f-strings-in-Python.html">
+                    f-strings in Python
+                </a>
+                <time itemprop="dateCreated" datetime="2017-11-13T10:04:00+01:00">
+                    Mon 13 November 2017
+                </time>
+            </li>
+        </ul>
+
+        <h2 id="python-ref" class="tag-title">Python</h2>
+        <ul class="list-articles-under-tag-category">
+            <li itemscope>
+                <a href="/f-strings-in-Python.html">
+                    f-strings in Python
+                </a>
+                <time itemprop="dateCreated" datetime="2017-11-13T10:04:00+01:00">
+                    Mon 13 November 2017
+                </time>
+            </li>
+        </ul>
+
+        <h2 id="recreations-ref" class="tag-title">recreations</h2>
+        <ul class="list-articles-under-tag-category">
+            <li itemscope>
+                <a href="/the-mandelbrot-set.html">
+                    The Mandelbrot set
+                </a>
+                <time itemprop="dateCreated" datetime="2017-12-11T21:23:00+01:00">
+                    Mon 11 December 2017
+                </time>
+            </li>
+        </ul>
+
+        <h2 id="web-ref" class="tag-title">web</h2>
+        <ul class="list-articles-under-tag-category">
+            <li itemscope>
+                <a href="/using-pelican-to-generate-a-static-site.html">
+                    Using Pelican to generate a static site
+                </a>
+                <time itemprop="dateCreated" datetime="2018-01-11T21:37:00+01:00">
+                    Thu 11 January 2018
+                </time>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+                    </div>
+                    <div class="span1"></div>
+                </div>
+            </div>
+        </div>
+<footer>
+
+
+
+
+    <div id="fpowered">
+        Powered by: <a href="http://getpelican.com/" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>
+        Theme: <a href="https://elegant.oncrashreboot.com/" title="Theme Elegant Home Page" target="_blank" rel="nofollow noopener noreferrer">Elegant</a>
+    </div>
+</footer>        <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="/theme/js/elegant.prod.9e9d5ce754.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+
+<script>
+    (function ($) {
+        // custom css expression for a case-insensitive contains()
+        jQuery.expr[':'].Contains = function(a,i,m){
+            return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+        };
+
+        function listFilter() {
+
+            $('.filterinput')
+            .change( function () {
+                var filter = $(this).val();
+                if(filter) {
+                    // this finds all links in a list that contain the input,
+                    // and hide the ones not containing the input while showing the ones that do
+                    $('.list-of-tags').find("a:not(:Contains(" + filter + "))").parent().hide();
+                    $('.list-of-tags').find("a:Contains(" + filter + ")").parent().show();
+                    } else {
+                    $('.list-of-tags').find("li").show();
+                }
+                return false;
+            })
+            .keyup( function () {
+                // fire the above change event after every letter
+                $(this).change();
+            });
+        }
+
+        //ondomready
+        $(function () {
+            listFilter($());
+        });
+    }(jQuery));
+
 </script>
-</body>
+
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+        License : MIT -->
 </html>
